@@ -54,6 +54,8 @@ class CategoryController extends AbstractController
 
     /**
      * @Route("/{id}", name="category_show", methods={"GET"})
+     * @param Category $category
+     * @return Response
      */
     public function show(Category $category): Response
     {
@@ -62,8 +64,12 @@ class CategoryController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/{id}/edit", name="category_edit", methods={"GET","POST"})
+     * @param Request $request
+     * @param Category $category
+     * @return Response
      */
     public function edit(Request $request, Category $category): Response
     {

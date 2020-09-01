@@ -15,7 +15,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/product")
+ * @Route("/product", schemes={"https"})
  */
 class ProductController extends AbstractController
 {
@@ -29,6 +29,7 @@ class ProductController extends AbstractController
     {
         return $this->render('product/index.html.twig', [
             'products' => $productRepository->findAll(),
+            'category' => $categoryRepository->findAll()
         ]);
     }
 
@@ -83,22 +84,10 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump($product);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('product_index');
         }
-
-        $em = $this->getDoctrine()->getManager();
-
-        $listCategories = $em->getRepository(Category::class)->findAll();
-
-        foreach ($listCategories as $category) {
-            $product->addCategory($category);
-        }
-
-
-        $em->flush();
 
 
         return $this->render('product/edit.html.twig', [
