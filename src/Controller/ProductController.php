@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
 use App\Entity\Category;
 use App\Entity\Product;
 use App\Form\CategoryType;
 use App\Form\ProductType;
+use App\Form\SearchForm;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,23 +17,30 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/product", schemes={"https"})
+ * @Route("/product")
  */
 class ProductController extends AbstractController
 {
     /**
      * @Route("/", name="product_index", methods={"GET"})
      * @param ProductRepository $productRepository
-     * @param CategoryRepository $categoryRepository
+     * @param Request $request
      * @return Response
      */
-    public function index(ProductRepository $productRepository, CategoryRepository $categoryRepository): Response
+    public function index(ProductRepository $productRepository, Request $request): Response
     {
+
+        $data = new SearchData();
+        $data->page = $request->get('page', 1);
+        $form = $this->createForm(SearchForm::class, $data);
+        $form->handleRequest($request);
+        $products = $productRepository->findSearch($data);
         return $this->render('product/index.html.twig', [
-            'products' => $productRepository->findAll(),
-            'category' => $categoryRepository->findAll()
+            'products' => $products,
+            'form' => $form->createView()
         ]);
     }
+
 
     /**
      * @Route("/new", name="product_new", methods={"GET","POST"})
@@ -41,7 +50,7 @@ class ProductController extends AbstractController
     public function new(Request $request): Response
     {
         $product = new Product();
-        $form = $this->createForm(ProductType::class, $product);
+        $form = $this->createForm(ProductType::class, $product, ['required_image' => true]);
         $form->handleRequest($request);
 
 
@@ -62,8 +71,6 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/{id}", name="product_show", methods={"GET"})
-     * @param Product $product
-     * @return Response
      */
     public function show(Product $product): Response
     {
@@ -74,9 +81,6 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="product_edit", methods={"GET","POST"})
-     * @param Request $request
-     * @param Product $product
-     * @return Response
      */
     public function edit(Request $request, Product $product): Response
     {

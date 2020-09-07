@@ -1,20 +1,101 @@
 <!DOCTYPE html>
 <html>
+{% block header %}
+
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block title %}<title>Welcome!</title>{% endblock %}
+        {% block stylesheets%}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
     </head>
     <body>
     <header>
+        <div class="blockTitle">
+            <h1 class="title">Plaisir d'offrir</h1>
+        </div>
+    </header>
+
+    <div>
+
+        <div class="header">
+        <ul class="main-nav">
+            <li><a href="{{ path('home') }}">Home</a></li>
+            <li><a href="{{ path('product_index') }}">Nounours</a></li>
+            <li><a href="#">à propos</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        </div>
         {% if app.user %}
             {{ app.user.username }}
-            <a href="{{ path('app_logout') }}"> Se déconnecter</a>
+            <div class="buttonLogout">
+                <a href="{{ path('app_logout') }}" class="logout"> Se déconnecter</a>
+            </div>
         {% else %}
-            <a href="{{ path('app_login') }}"> Se connecter</a>
+            <div class="buttonLogin">
+                <a href="{{ path('app_login') }}" class="login"> Se connecter</a>
+            </div>
         {% endif %}
-    </header>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+{% endblock%}
+        {% block body %}
+
+        <div class="carousel">
+            <ul class="slides">
+                <input type="radio" name="radio-buttons" id="img-1" checked />
+                <li class="slide-container">
+                    <div class="slide-image">
+                        <img src="/uploads/images/nounoursplein.jpg">
+                    </div>
+                    <div class="carousel-controls">
+                        <label for="img-3" class="prev-slide">
+                        </label>
+                        <label for="img-2" class="next-slide">
+                        </label>
+                    </div>
+                </li>
+                <input type="radio" name="radio-buttons" id="img-2" />
+                <li class="slide-container">
+                    <div class="slide-image">
+                        <img src="/uploads/images/ZUFmR2Zceg.jpg">
+                    </div>
+                    <div class="carousel-controls">
+                        <label for="img-1" class="prev-slide">
+                        </label>
+                        <label for="img-3" class="next-slide">
+                        </label>
+                    </div>
+                </li>
+                <input type="radio" name="radio-buttons" id="img-3" />
+                <li class="slide-container">
+                    <div class="slide-image">
+                        <img src="/uploads/images/nounoursplein.jpg">
+                    </div>
+                    <div class="carousel-controls">
+                        <label for="img-2" class="prev-slide">
+                        </label>
+                        <label for="img-1" class="next-slide">
+                        </label>
+                    </div>
+                </li>
+                <div class="carousel-dots">
+                    <label for="img-1" class="carousel-dot" id="img-dot-1"></label>
+                    <label for="img-2" class="carousel-dot" id="img-dot-2"></label>
+                    <label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    {% endblock %}
+
+
+
+
+
     </body>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </html>

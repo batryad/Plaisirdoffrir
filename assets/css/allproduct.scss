@@ -1,0 +1,18 @@
+@import "~bootstrap/scss/bootstrap";
+
+.grid {
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 35px;
+
+
+
+}
+.productTitle {
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+

@@ -1,41 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product index{% endblock %}
+{% block title %}<title>Produit</title>{% endblock %}
 
 {% block body %}
-    <h1>Product index</h1>
+    <h1 class="productTitle">Tous les nounours</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Picture</th>
-                <th>Price</th>
-                <th>Category</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td><img src="{{ asset('images/product/' ~ product.picture) }}" alt="kh"></td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.category.name }}</td>
-                <td>
-                    <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                {% include 'product/filter.html.twig' with {form: form} only%}
 
-    <a href="{{ path('product_new') }}">Create new</a>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <div class="grid">
+                {% for product in products %}
+                    {% include '/allproduct/card.html.twig' with {product: product} only%}
+                {% endfor %}
+            </div>
+            <div>
+                {{ knp_pagination_render(products) }}
+            </div>
+
+        </div>
+
+
+
+
+    </div>
 {% endblock %}

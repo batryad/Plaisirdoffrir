@@ -1,0 +1,16 @@
+ <div class="card">
+            <img src="{{ asset('/uploads/product/'~ product.image) }}" alt="product-image" class="card-img-top" height="250px" >
+            <div class="card-body">
+                <div class="card-title">{{ product.name }}</div>
+                <div class="card-title text-primary">{{ product.price | number_format(0, ',', ' ') }} €</div>
+                {{ product.category.name }}
+                <a href="{{ path('product_show', {'id': product.id}) }}" class="card-link">show</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                <a href="{{ path('product_edit', {'id': product.id}) }}" class="card-link">edit</a>
+                <a href="{{ path('product_new') }}">Create new</a>
+                {% endif %}
+
+            </div>
+    </div>
+
+

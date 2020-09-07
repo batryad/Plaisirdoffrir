@@ -30,10 +30,10 @@ class Product
 
 
     /**
-     * @Vich\UploadableField(mapping="products", fileNameProperty="picture")
+     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
      * @var File
      */
-    private $pictureFile;
+    private $imageFile;
 
     private $user;
 
@@ -49,13 +49,23 @@ class Product
 
     /**
      * @ORM\Column(type="datetime")
+     * @var \DateTime
      */
-    private $updateAt;
-
+    private $updatedAt;
+    public function __construct()
+    {
+        $this->updatedAt = new \DateTime("now");
+    }
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
      */
-    private $picture;
+    private $image;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
 
     /**
      * @return mixed
@@ -115,53 +125,56 @@ class Product
         return $this;
     }
 
-    /**
-     * @return File
-     */
-    public function getPictureFile(): ?File
+
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->pictureFile;
+        return $this->updatedAt;
     }
 
-    /**
-     * @param File|null $image
-     * @return Product
-     */
-
-    public function setPictureFile(File $image = null): Product
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
-        $this->pictureFile = $image;
-        if ($image = null) {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+    public function getImage()
+    {
+        return $this->image;
+    }
 
-            $this->updateAt = new \DateTime("now");
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
         }
-        return $this;
     }
 
-    public function getUpdateAt(): ?\DateTimeInterface
+    public function getImageFile()
     {
-        return $this->updateAt;
+        return $this->imageFile;
     }
 
-    public function setUpdateAt(\DateTimeInterface $updateAt): self
+    public function getDescription(): ?string
     {
-        $this->updateAt = $updateAt;
-
-        return $this;
+        return $this->description;
     }
 
-    public function getPicture(): ?string
+    public function setDescription(?string $description): self
     {
-        return $this->picture;
-    }
-
-    public function setPicture(?string $picture): self
-    {
-        $this->picture = $picture;
+        $this->description = $description;
 
         return $this;
     }
-
 
 
 }

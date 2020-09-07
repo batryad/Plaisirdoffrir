@@ -13,7 +13,7 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt)|css|uploads|js)/
             security: false
         main:
             anonymous: true
@@ -33,6 +33,6 @@ security:
     # Note: Only the *first* access control that matches will be used
 
     access_control:
-    # - { path: ^/product/new, roles: ROLE_ADMIN }
-    # - { path: ^/admin, roles: ROLE_ADMIN }
-      - { path: ^/home, roles: ROLE_USER }
+      - { path: ^/product/new, roles: ROLE_ADMIN }
+      - { path: ^/product/edit, roles: ROLE_ADMIN }
+    # - { path: ^/home, roles: ROLE_USER }
