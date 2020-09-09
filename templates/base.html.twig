@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="UTF-8">
-        {% block title %}<title>Welcome!</title>{% endblock %}
+        {% block title %}<title>Plaisir d'offrir</title>{% endblock %}
         {% block stylesheets%}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -22,6 +22,7 @@
         <ul class="main-nav">
             <li><a href="{{ path('home') }}">Home</a></li>
             <li><a href="{{ path('product_index') }}">Nounours</a></li>
+            <li><a href="{{ path('basket_index') }}">Panier</a></li>
             <li><a href="#">à propos</a></li>
             <li><a href="#">Contact</a></li>
         </ul>

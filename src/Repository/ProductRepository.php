@@ -64,7 +64,7 @@ class ProductRepository extends ServiceEntityRepository
 
     /**
      * @param SearchData $search
-     * @return Product[]
+     * @return PaginationInterface
      */
 
 

@@ -38,7 +38,7 @@ class Product
     private $user;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $price;
 
