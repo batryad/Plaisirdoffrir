@@ -14,6 +14,7 @@
         "knplabs/knp-paginator-bundle": "^5.3",
         "phpdocumentor/reflection-docblock": "^5.1",
         "sensio/framework-extra-bundle": "^5.6",
+        "stripe/stripe-php": "^7.52",
         "symfony/asset": "5.1.*",
         "symfony/console": "5.1.*",
         "symfony/dotenv": "5.1.*",
@@ -40,7 +41,7 @@
         "symfony/twig-bundle": "5.1.*",
         "symfony/validator": "5.1.*",
         "symfony/web-link": "5.1.*",
-        "symfony/webpack-encore-bundle": "^1.7",
+        "symfony/webpack-encore-bundle": "^1.7.3",
         "symfony/yaml": "5.1.*",
         "symfonycasts/verify-email-bundle": "^1.0",
         "twig/extra-bundle": "^2.12|^3.0",
@@ -107,4 +108,6 @@
             "require": "5.1.*"
         }
     }
+
+
 }

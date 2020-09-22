@@ -1,102 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 {% block header %}
 
     <head>
         <meta charset="UTF-8">
         {% block title %}<title>Plaisir d'offrir</title>{% endblock %}
         {% block stylesheets%}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
+
     </head>
-    <body>
     <header>
         <div class="blockTitle">
             <h1 class="title">Plaisir d'offrir</h1>
         </div>
-    </header>
-
-    <div>
-
         <div class="header">
         <ul class="main-nav">
             <li><a href="{{ path('home') }}">Home</a></li>
             <li><a href="{{ path('product_index') }}">Nounours</a></li>
             <li><a href="{{ path('basket_index') }}">Panier</a></li>
+            {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ path('admin')}}">Admin</a></li>
+            {% endif %}
             <li><a href="#">à propos</a></li>
-            <li><a href="#">Contact</a></li>
         </ul>
-
         </div>
         {% if app.user %}
-            {{ app.user.username }}
+
+            <h5 class="nameUser">Hello {{ app.user.name }} !</h5>
             <div class="buttonLogout">
                 <a href="{{ path('app_logout') }}" class="logout"> Se déconnecter</a>
             </div>
         {% else %}
             <div class="buttonLogin">
-                <a href="{{ path('app_login') }}" class="login"> Se connecter</a>
+
+                <a href="{{ path('app_login') }}" class="login fa fa-user"> Se connecter</a>
             </div>
         {% endif %}
+    </header>
 
 {% endblock%}
-        {% block body %}
+        <body>
 
-        <div class="carousel">
-            <ul class="slides">
-                <input type="radio" name="radio-buttons" id="img-1" checked />
-                <li class="slide-container">
-                    <div class="slide-image">
-                        <img src="/uploads/images/nounoursplein.jpg">
-                    </div>
-                    <div class="carousel-controls">
-                        <label for="img-3" class="prev-slide">
-                        </label>
-                        <label for="img-2" class="next-slide">
-                        </label>
-                    </div>
-                </li>
-                <input type="radio" name="radio-buttons" id="img-2" />
-                <li class="slide-container">
-                    <div class="slide-image">
-                        <img src="/uploads/images/ZUFmR2Zceg.jpg">
-                    </div>
-                    <div class="carousel-controls">
-                        <label for="img-1" class="prev-slide">
-                        </label>
-                        <label for="img-3" class="next-slide">
-                        </label>
-                    </div>
-                </li>
-                <input type="radio" name="radio-buttons" id="img-3" />
-                <li class="slide-container">
-                    <div class="slide-image">
-                        <img src="/uploads/images/nounoursplein.jpg">
-                    </div>
-                    <div class="carousel-controls">
-                        <label for="img-2" class="prev-slide">
-                        </label>
-                        <label for="img-1" class="next-slide">
-                        </label>
-                    </div>
-                </li>
-                <div class="carousel-dots">
-                    <label for="img-1" class="carousel-dot" id="img-dot-1"></label>
-                    <label for="img-2" class="carousel-dot" id="img-dot-2"></label>
-                    <label for="img-3" class="carousel-dot" id="img-dot-3"></label>
-                </div>
-            </ul>
+        <div class="allContent">
+        {% block body %}
+   <div class="carouselText">
+       <div class="slidesText">
+
+           <img src="/uploads/images/nounoursplein.jpg" alt="slide image" class="slideText">
+           <img src="/uploads/images/doudou.jpg" alt="slide image" class="slideText">
+       </div>
+       <div class="controls">
+           <div class="control prev-slide">&#9668;</div>
+           <div class="control next-slide">&#9658;</div>
+       </div>
+   </div>
+            <div class="welcomeText">
+            <h2 class="welcomeTitle">Bienvenue dans un univers remplis de douceurs sur plaisir d'offrir !</h2>
+            <p>
+                <big>
+                It is a long established fact that a reader will be distracted by the readable
+                content of a page when looking at its layout. The point of using Lorem Ipsum is
+                that it has a more-or-less normal distribution of letters, as opposed to using
+                'Content here, content here', making it look like readable English. Many desktop
+                publishing packages and web page editors now use Lorem Ipsum as their default model text,
+                and a search for 'lorem ipsum' will uncover many web sites still in their infancy.
+                Various versions have evolved over the years, sometimes by accident,
+                sometimes on purpose (injected humour and the like).
+                </big>
+            </p>
+            </div>
+    {% endblock %}
+        </div>
+<!-- Site footer -->
+        </body>
+{% block footer %}
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h6>About</h6>
+                <p class="text-justify">Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative  to help the upcoming programmers with the code. Scanfcode focuses on providing the most efficient code or snippets as the code wants to be simple. We will help programmers build up concepts in different programming languages that include C, C++, Java, HTML, CSS, Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.</p>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <h6>Categories</h6>
+                <ul class="footer-links">
+                    <li><a href="#">C</a></li>
+                    <li><a href="#">UI Design</a></li>
+                    <li><a href="#">PHP</a></li>
+                    <li><a href="#">Java</a></li>
+                    <li><a href="#">Android</a></li>
+                    <li><a href="#">Templates</a></li>
+                </ul>
+            </div>
+
+            <div class="col-xs-6 col-md-3">
+                <h6>Quick Links</h6>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Contribute</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+                <p class="copyright-text">Copyright &copy; 2017 All Rights Reserved by
+                    <a href="#">Scanfcode</a>.
+                </p>
+            </div>
         </div>
     </div>
+</footer>
 
-    {% endblock %}
-
-
-
-
-
-    </body>
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
 </html>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+
+

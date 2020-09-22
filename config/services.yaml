@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     app.path.product_images: /uploads/product
+    stripe_public_key: pk_test_xxxxxxxxxxxxxxxxxxxxxxxx
+    stripe_secret_key: sk_test_xxxxxxxxxxxxxxxxxxxxxxxx
 
 services:
     # default configuration for services in *this* file

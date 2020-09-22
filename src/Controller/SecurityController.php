@@ -15,18 +15,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SecurityController extends AbstractController
 {
-    /**
-     * @Route("/security", name="security")
-     */
-    public function index()
-    {
-        return $this->render('security/index.html.twig', [
-            'controller_name' => 'SecurityController',
-        ]);
-    }
 
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/connexion", name="app_login")
      * @param Request $request
      * @param EntityManagerInterface $manager
      * @param AuthenticationUtils $authenticationUtils
@@ -50,9 +41,9 @@ class SecurityController extends AbstractController
             $manager->flush();
         }
 
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+         if ($this->getUser()) {
+            return $this->redirectToRoute('home');
+         }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -68,6 +59,7 @@ class SecurityController extends AbstractController
     public function logout()
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+
 
 
     }

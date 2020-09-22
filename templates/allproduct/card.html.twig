@@ -1,16 +1,14 @@
  <div class="card">
-            <img src="{{ asset('/uploads/product/'~ product.image) }}" alt="product-image" class="card-img-top" height="250px" >
-            <div class="card-body">
+            <img src="{{ asset('/uploads/product/'~ product.image) }}"  alt="product-image" class="card-img-top imgProduct" >
+            <div class="card-footer">
                 <div class="card-title">{{ product.name }}</div>
+                <div class="contentCard">
                 <div class="card-title text-primary">{{ product.price | number_format(0, ',', ' ') }} €</div>
-                {{ product.category.name }}
-                <a href="{{ path('product_show', {'id': product.id}) }}" class="card-link">show</a>
+                <a href="{{ path('basket_add', {'id': product.id } )}}" class="card-link btn btn-primary w-100">Ajouter au panier</a>
+                <a href="{{ path('product_show', {'id': product.id}) }}">En savoir plus!</a>
                 {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path('product_edit', {'id': product.id}) }}" class="card-link">edit</a>
-                <a href="{{ path('product_new') }}">Create new</a>
+                <a href="{{ path('product_edit', {'id': product.id}) }}" class="card-link">Éditer</a>
                 {% endif %}
-
             </div>
     </div>
-
-
+ </div>

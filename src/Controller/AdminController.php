@@ -2,31 +2,32 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @Route("/category")
+ * @Route("/admin")
  */
-class CategoryController extends AbstractController
+class AdminController extends AbstractController
 {
     /**
-     * @Route("/", name="category_index", methods={"GET"})
+     * @Route("/", name="admin", methods={"GET"})
      * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository)
     {
-        return $this->render('category/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'AdminController',
+            'categories' => $categoryRepository->findAll()
         ]);
     }
-
     /**
      * @Route("/new", name="category_new", methods={"GET","POST"})
      * @param Request $request
@@ -43,7 +44,7 @@ class CategoryController extends AbstractController
             $entityManager->persist($category);
             $entityManager->flush();
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('admin');
         }
 
         return $this->render('category/new.html.twig', [
@@ -52,17 +53,6 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="category_show", methods={"GET"})
-     * @param Category $category
-     * @return Response
-     */
-    public function show(Category $category): Response
-    {
-        return $this->render('category/show.html.twig', [
-            'category' => $category,
-        ]);
-    }
 
 
     /**
@@ -79,7 +69,7 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('admin');
         }
 
         return $this->render('category/edit.html.twig', [
@@ -90,6 +80,9 @@ class CategoryController extends AbstractController
 
     /**
      * @Route("/{id}", name="category_delete", methods={"DELETE"})
+     * @param Request $request
+     * @param Category $category
+     * @return Response
      */
     public function delete(Request $request, Category $category): Response
     {
@@ -99,6 +92,9 @@ class CategoryController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('category_index');
+        return $this->redirectToRoute('admin');
     }
+
+
+
 }

@@ -33,6 +33,9 @@ security:
     # Note: Only the *first* access control that matches will be used
 
     access_control:
-      - { path: ^/product/new, roles: ROLE_ADMIN }
-      - { path: ^/product/edit, roles: ROLE_ADMIN }
+      - { path: ^/produit/new, roles: ROLE_ADMIN }
+      - { path: ^/produit/edit, roles: ROLE_ADMIN }
+      - { path: ^/admin/, roles: ROLE_ADMIN }
+      - { path: ^/admin/new, roles: ROLE_ADMIN }
+      - { path: ^/admin/edit, roles: ROLE_ADMIN }
     # - { path: ^/home, roles: ROLE_USER }

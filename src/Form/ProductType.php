@@ -21,20 +21,29 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description', TextareaType::class)
+            ->add('name', TextType::class, [
+
+                'label' => 'Nom du produit :'
+            ])
+            ->add('description', TextareaType::class, [
+
+                'label' => 'Description du produit :'
+            ])
             ->add('imageFile',
                 VichImageType::class, [
                     'allow_delete' => false,
                     'download_link' => false,
-                    'label' => false,
                     'required'=> false,
+                    'label' => 'Photo du produit :'
                     ])
             ->add('price',MoneyType::class, [
+                'label' => 'Prix du produit :'
 
             ])
-            ->add('category', null,[
+            ->add('category', null, [
+                'required' => true,
                 'choice_label' => 'name',
+                'label' => 'Catégorie du produit :'
             ])
         ;
     }

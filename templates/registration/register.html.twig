@@ -2,6 +2,10 @@
 
 {% block title %}<title>Inscription</title>{% endblock %}
 
+     {% block stylesheets%}
+         {{ encore_entry_link_tags('login') }}
+     {% endblock %}
+
 {% block body %}
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
@@ -10,15 +14,27 @@
 <div class="loginForm">
     <h1 class="connexion">Remplisez ce formulaire</h1>
         {{ form_start(registrationForm) }}
-        <div class="formLabel">
+
+        {{ form_row(registrationForm.name) }}
         {{ form_row(registrationForm.email) }}
-        </div>
-        {{ form_row(registrationForm.username) }}
         {{ form_row(registrationForm.password, { label: 'Password' }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <section class="accordion">Section 1</section>
+        <div class="panel">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+        </div>
+         {{ form_row(registrationForm.agreeTerms) }}
 
     <button type="submit" class="btn loginButton">Inscription !</button>
     {{ form_end(registrationForm) }}
-</div>
     </div>
+     </div>
+
 {% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('login') }}
+{% endblock %}
+

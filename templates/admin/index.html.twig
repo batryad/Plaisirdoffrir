@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Admin</title>{% endblock %}
+
+{% block body %}
+    <section class="card">
+
+        <table id="customers">
+            <tr>
+                <th>Liste des commandes :</th>
+                <th>Produit le plus vendu : </th>
+            </tr>
+            <tr>
+                <td>-- --</td>
+                <td>-- --</td>
+            </tr>
+            <tr>
+                <td>-- --</td>
+                <td>-- --</td>
+            </tr>
+            <tr>
+                <td>-- --</td>
+                <td>-- --</td>
+            </tr>
+            <tr>
+                <td>-- --</td>
+                <td>-- --</td>
+
+            </tr>
+        </table>
+
+
+
+    </section>
+
+    <section class="card">
+
+        <h2>Les catégories :</h2>
+
+        <table class="table">
+            <tr>
+                    <a  class="buttonCategory btn btn-primary" href="{{ path('category_new') }}">Create new</a>
+            </tr>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td> <h5>{{ category.name }}</h5></td>
+                    <td>
+                        <a href="{{ path('category_edit', {'id': category.id}) }}" class="btn btn-info">edit</a>
+                    </td>
+                    <td>
+                        {% if category.products is empty %}
+                            {{ include('category/_delete_form.html.twig') }}
+                            {% else %}
+                                <h8>Posséde des produits</h8>
+                        {% endif %}
+
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+
+
+
+    </section>
+
+
+{% endblock %}
+
+
+{% block footer %} {% endblock %}

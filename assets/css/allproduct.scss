@@ -1,14 +1,18 @@
 @import "~bootstrap/scss/bootstrap";
 
+
+
 .grid {
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 35px;
-
-
-
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 30px;
 }
+.imgProduct {
+
+  height: 420px;
+}
+
 .productTitle {
   text-align: center;
   padding: 20px;
@@ -16,3 +20,109 @@
 }
 
 
+.productForm {
+  width: 70%;
+  align-items: center;
+
+}
+
+.allProductForm {
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttonSave {
+   display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.deleteProduct {
+
+  text-align: center;
+}
+
+.paginator {
+
+  margin-top: 70px;
+}
+
+
+.category {
+
+  margin-left: 45%;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+h4 {
+  text-align: center;
+  padding: 15px;
+}
+.buttonFilter {
+  margin-left: 40%;
+  height: 45px;
+}
+
+.accordion {
+  text-align: center;
+}
+.card-footer {
+
+  height: 100%;
+}
+
+
+
+
+
+/* =================================
+  Media Queries
+==================================== */
+
+
+@media screen and (min-width: 1000px) {
+
+  .grid {
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 35px;
+  }
+
+  .imgProduct {
+
+    height: 320px;
+
+  }
+
+  .allFilter {
+
+  position: absolute;
+    margin-top: 50px;
+  }
+
+  .imgProduct {
+
+    height: 300px;
+  }
+
+  .category {
+
+    margin-left: 0;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+
+  .buttonFilter {
+    margin-left: 0;
+    height: 45px;
+  }
+  .accordion {
+    text-align: center;
+    width: 350px ;
+  }
+
+
+
+}

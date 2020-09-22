@@ -1,9 +1,32 @@
 {
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.30.2",
+    "@symfony/webpack-encore": "^0.31.0",
     "bootstrap": "^4.5.2",
     "node-sass": "^4.14.1",
-    "sass-loader": "^8.0.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.1",
+    "webpack": "^4.44.1",
+    "webpack-dev-server": "^3.11.0",
     "webpack-notifier": "^1.6.0"
-  }
+  },
+  "dependencies": {
+    "ajax": "^0.0.4",
+    "common-style": "^3.1.0",
+    "core-js": "^3.6.5",
+    "drift-zoom": "^1.4.0",
+    "easy": "^11.1.10",
+    "easyzoom": "^2.5.3",
+    "fancybox": "^3.0.1",
+    "jquery": "^3.5.1",
+    "jquery.get-selector": "^1.0.0",
+    "popper.js": "^1.16.1",
+    "react-zoom-pan-pinch": "^1.6.1",
+    "script": "^0.1.4",
+    "slide": "^1.1.6",
+    "strict": "^0.0.0",
+    "style": "^0.0.3",
+    "swiper": "^6.2.0",
+    "zoom": "^0.0.2"
+  },
+  "optionalDependencies": {}
 }

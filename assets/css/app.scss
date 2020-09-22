@@ -1,9 +1,42 @@
 @import "~bootstrap/scss/bootstrap";
 @import "allproduct.scss";
 @import "login.scss";
+@import "product.scss";
+@import "admin.scss";
 
-* {
+
+*{
     box-sizing: border-box;
+    margin:0;
+    padding:0;
+
+}
+html, body {
+    height: 100%;
+   padding: 0;
+}
+body {
+    display : table;
+    width: 100%;
+
+}
+.header {
+    background-color: gainsboro;
+}
+.allContent {
+    margin-bottom: 400px ;
+
+
+}
+h2, h3, h4, h5, h6 {
+    text-shadow: 2px 2px #d4d4d4;
+
+
+}
+footer {
+    display : table-row;
+
+
 }
 
 
@@ -51,7 +84,7 @@ a {
     border-radius: 5px;
     width: 130px;
     text-align: center;
-    margin-left: 40%;
+    margin-left: 43%;
     margin-top: 10px;
 }
 .title {
@@ -59,6 +92,7 @@ a {
     color: white;
     text-align: center;
     padding-top: 40px;
+    text-shadow: 2px 2px #232323;
 
 
 }
@@ -71,115 +105,154 @@ a {
     opacity: 80%;
 
 }
-.carousel {
-    border: 7px solid #5eb5e0;
-    border-radius: 5px;
-    margin-top: 100px;
-    margin-left: 2%;
-    margin-right: 2%;
+.carouselText {
+
+    margin-top: 50px;
+
 }
 
-ul.slides {
-    display: block;
-    position: relative;
-    height: 700px;
-    margin: 0;
-    padding: 0;
+
+
+$carousel-height: 700px;
+
+
+
+
+.carouselText {
+    height: $carousel-height;
+    border-radius: 3px;
     overflow: hidden;
-    list-style: none;
+    position: relative;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+
+    &:hover .controls {
+        opacity: 1;
+    }
+
+    .controls {
+        opacity: 0;
+        display: flex;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        justify-content: space-between;
+        width: 100%;
+        z-index: 99999;
+        transition: all ease 0.5s;
+
+        .control {
+            margin: 0 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            opacity: .5;
+            transition: ease .3s;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .slidesText {
+        position: absolute;
+        transform: translateY(-50%);
+        display: flex;
+        width: 100%;
+        height: 0;
+        transition: 1s ease-in-out all;
+
+        .slideText {
+            width: 100%;
+            min-height: $carousel-height;
+            height: auto;
+        }
+    }
 }
 
 
-
-ul.slides input {
-    display: none;
+.site-footer [class^=col-]
+{
+    margin-bottom:30px
 }
 
+.site-footer
+{
+    background-color:#5eb5e0;
+    font-size:15px;
+    line-height:24px;
+    color:black;
+}
+.site-footer
+{
+    padding-bottom:0
+}
+ .site-footer .copyright-text,.site-footer .social-icons
+ {
+     text-align:center
+ }
 
-.slide-image {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    opacity: 0;
-    transition: all .7s ease-in-out;
+
+
+.social-icons li.title
+{
+    display:block;
+    margin-right:0;
+    font-weight:600
+}
+h6 {
+    color: white;
 }
 
-.slide-image img {
-    width: auto;
-    min-width: 100%;
-    height: 100%;
+textarea.form-control {
+
+    height: 400px;
 }
 
-.carousel-controls {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    font-size: 100px;
-    line-height: 600px;
-    color: #fff;
+form.filter {
+    text-align: center;
+
+}
+form.filter {
+    text-align: justify;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-bottom: 60px;
 }
 
-.carousel-controls label {
-    display: none;
-    position: absolute;
-    padding: 0 20px;
-    opacity: 0;
-    transition: opacity .2s;
-    cursor: pointer;
+.buttonLogout {
+    background-color: white;
+    border: 10px solid #5eb5e0;
+    border-radius: 5px;
+    width: 150px;
+    text-align: center;
+    margin-left: 42%;
 }
 
-
-.carousel-controls .prev-slide {
-    width: 49%;
-    text-align: left;
-    left: 0;
+.nameUser {
+    word-break: break-all;
+    margin-left: 42%;
 }
 
-.carousel-controls .next-slide {
-    width: 49%;
-    text-align: right;
-    right: 0;
-}
+.welcomeText {
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
 
-.carousel-dots {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 20px;
-    z-index: 999;
     text-align: center;
 }
 
-.carousel-dot {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: deepskyblue;
-    opacity: 0.5;
-    margin: 10px;
+.welcomeTitle {
+    padding: 25px;
 }
 
-input:checked + .slide-container .slide-image {
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity 1s ease-in-out;
-}
-
-
-input#img-1:checked ~ .carousel-dots label#img-dot-1,
-input#img-2:checked ~ .carousel-dots label#img-dot-2,
-input#img-3:checked ~ .carousel-dots label#img-dot-3
-{
-    opacity: 1;
-}
-
-
-input:checked + .slide-container .nav label { display: block; }
 
 
 
@@ -191,8 +264,7 @@ input:checked + .slide-container .nav label { display: block; }
 
 
 
-
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1025px) {
     .header,
     .main-nav {
         background-color: gainsboro;
@@ -212,16 +284,9 @@ input:checked + .slide-container .nav label { display: block; }
         background-color: white;
         border: 8px solid gainsboro;
         border-radius: 5px;
-        width: 130px;
         text-align: center;
-    }
-    .buttonLogin {
-        background-color: white;
-        border: 8px solid gainsboro;
-        border-radius: 5px;
+        margin-left: 80%;
         width: 130px;
-        text-align: center;
-        margin-left: 85%;
     }
 
 
@@ -231,9 +296,78 @@ input:checked + .slide-container .nav label { display: block; }
         border-radius: 5px;
         width: 150px;
         text-align: center;
+        margin-left: 85%;
+    }
+
+    .site-footer
+    {
+        background-color:#5eb5e0;
+        padding:45px 0 20px;
+        font-size:15px;
+        line-height:24px;
+        color: black;
+    }
+    .site-footer hr
+    {
+        border-top-color:white;
+        opacity:0.5
+    }
+    .site-footer hr.small
+    {
+        margin:20px 0
+    }
+    .site-footer h6
+    {
+        color:#fff;
+        font-size:16px;
+        text-transform:uppercase;
+        margin-top:5px;
+        letter-spacing:2px
+    }
+    .site-footer a
+    {
+        color:white;
+    }
+    .site-footer a:hover
+    {
+        color:#3366cc;
+        text-decoration:none;
+    }
+    .footer-links
+    {
+        padding-left:0;
+        list-style:none
+    }
+    .footer-links li
+    {
+        display:block
+    }
+    .footer-links a
+    {
+        color:white;
+    }
+    .footer-links a:active,.footer-links a:focus,.footer-links a:hover
+    {
+        color:#3366cc;
+        text-decoration:none;
+    }
+    .footer-links.inline li
+    {
+        display:inline-block
+    }
+    .copyright-text
+    {
+        margin:0
+    }
+    .nameUser {
+        word-break: break-all;
+        margin-left: 85%;
     }
 
 }
+
+
+
 
 * {
     margin: 0;

@@ -1,0 +1,367 @@
+
+.allContent .imgProductView {
+  justify-content: start;
+  margin-left: 30px;
+
+
+}
+
+.allContent .infoProductView {
+  display: flex;
+  justify-content: center;
+
+}
+
+.productView .infoProductView {
+
+  display: grid;
+  justify-content: center;
+}
+
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.price {
+  margin-bottom: 10px;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 860px;
+}
+
+.columns {
+  margin: 0 auto;
+  max-width: 900px;
+}
+
+.details {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  float: left;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+.thumbnail-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+}
+
+.price {
+  font-size: 20px;
+  color: #777474;
+}
+
+.wishlist-container {
+  padding-left: 0;
+}
+
+#header {
+  width: 100%;
+  text-align: center;
+  background: white;
+  padding: 5px;
+  /*box-shadow: 0 10px 17px 0px #c0c0c0;*/
+  box-shadow: 0 5px 10px 0px #dbd7d7;
+}
+#header img {
+  max-width: 30px;
+}
+
+.columns {
+  margin-top: 30px;
+}
+
+.button {
+  width: 100%;
+  border-radius: 0;
+}
+
+.select, select {
+  width: 100%;
+  border-radius: 0 !important;
+}
+
+#wishlist-container {
+  padding-left: 0;
+}
+
+#buy-container {
+  padding-right: 0;
+}
+
+.small-text {
+  font-size: 14px;
+}
+
+.small-text span {
+  font-weight: bold;
+}
+
+.allProductContent {
+  margin-left: 0;
+}
+
+
+
+.buy-button:hover, .buy-button:active, .buy-button:focus {
+  color: white;
+  opacity: 0.9;
+}
+
+p {
+  word-break: break-all
+}
+
+.buy {
+  text-decoration: none;
+  color: white;
+}
+.buy:hover {
+  text-decoration: none;
+  color: white;
+}
+
+.allProductContent {
+  margin-top: 50px;
+  height: auto;
+
+}
+
+.polaroid {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  width: 400px;
+}
+
+#header {
+  display: flex;
+  justify-content: center;
+}
+
+.contentCategoryName {
+  margin-top: 10px;
+}
+
+.categoryName {
+
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.descr {
+  justify-content: center;
+  display: flex;
+}
+
+p.description {
+  width: 60%;
+}
+
+
+
+
+
+@media only screen and (min-width: 1020px) {
+
+  #wishlist-container, #buy-container {
+    padding: 0 0 15px 0;
+  }
+  .zoom {
+    margin-bottom: 20px;
+  }
+  .zoom p {
+    text-align:center;
+  }
+
+  .zoom img:hover {
+    transform: scale(1.3);
+    margin-bottom: 100px;
+  }
+  .zoom img{
+    cursor: zoom-in;
+  }
+
+
+
+  .allContent .imgProductView {
+    justify-content: start;
+    margin-left: 30px;
+
+
+  }
+
+  .allContent .infoProductView {
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .productView .infoProductView {
+
+    display: grid;
+    justify-content: center;
+  }
+
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+
+  .price {
+    margin-bottom: 10px;
+  }
+
+  .wrapper {
+    margin: 0 auto;
+    width: 860px;
+  }
+
+  .columns {
+    margin: 0 auto;
+    max-width: 900px;
+  }
+
+  .details {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin-bottom: 100px;
+    text-align: start;
+  }
+
+  .thumbnail-container {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    float: left;
+  }
+
+  .price {
+    font-size: 20px;
+    color: #777474;
+  }
+
+  .wishlist-container {
+    padding-left: 0;
+  }
+
+  #header {
+    width: 100%;
+    text-align: center;
+    background: white;
+    padding: 5px;
+    /*box-shadow: 0 10px 17px 0px #c0c0c0;*/
+    box-shadow: 0 5px 10px 0px #dbd7d7;
+  }
+  #header img {
+    max-width: 30px;
+  }
+
+  .columns {
+    margin-top: 30px;
+  }
+
+  .button {
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .select, select {
+    width: 100%;
+    border-radius: 0 !important;
+  }
+
+  #wishlist-container {
+    padding-left: 0;
+  }
+
+  #buy-container {
+    padding-right: 0;
+  }
+
+  .small-text {
+    font-size: 14px;
+  }
+
+  .small-text span {
+    font-weight: bold;
+  }
+
+
+
+  .buy-button:hover, .buy-button:active, .buy-button:focus {
+    color: white;
+    opacity: 0.9;
+  }
+
+  p {
+    word-break: break-all
+  }
+
+  .buy {
+    text-decoration: none;
+    color: white;
+  }
+  .buy:hover {
+    text-decoration: none;
+    color: white;
+  }
+
+  .allProductContent {
+    margin-top: 50px;
+    width: 55%;
+    height: auto;
+
+  }
+
+  .polaroid {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 25px;
+    width: 400px;
+  }
+
+  #header {
+    display: flex;
+    justify-content: center;
+  }
+
+  .contentCategoryName {
+    margin-top: 10px;
+  }
+
+  .categoryName {
+
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .descr {
+    display: block;
+  }
+
+  p.description {
+    width: auto;
+  }
+
+  .allProductContent {
+    margin-left: 50px;
+  }
+
+}
+

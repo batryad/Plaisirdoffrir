@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Component\Mailer\Bridge\Google\Transport\GmailSmtpTransport;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\Mailer;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
@@ -12,6 +13,7 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,15 +31,16 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/inscription", name="app_register")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @param GuardAuthenticatorHandler $guardHandler
      * @param UserAuthenticator $authenticator
+     * @param MailerInterface $mailer
      * @return Response
-     * @throws \Symfony\Component\Mailer\Exception\TransportExceptionInterface
+     * @throws TransportExceptionInterface
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, UserAuthenticator $authenticator, MailerInterface $mailer): Response
     {
         $user = new User();
         $user->setRoles(['ROLE_USER']);
@@ -56,7 +59,15 @@ class RegistrationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-            $this->addFlash('succes', 'your message has been sent successfully');
+
+            $email = (new TemplatedEmail())
+                ->from(Address::fromString('Plaisir doffir <ryadus2001@gmail.com>'))
+                ->to($user->getUsername())
+                ->subject('Bienvenue')
+                ->html('Plaisir d\'offrir, votre inscription est confirmé');
+            $mailer->send($email);
+
+            $this->addFlash('succes', 'Inscription validé !');
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,

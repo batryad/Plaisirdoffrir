@@ -2,23 +2,27 @@
 
 {% block title %}<title>Produit</title>{% endblock %}
 
+
+
 {% block body %}
-    <h1 class="productTitle">Tous les nounours</h1>
+    <h2 class="productTitle">Tous les nounours</h2>
+            {% include 'product/filter.html.twig' with {form: form} only%}
+
     <div class="container">
-        <div class="row">
-            <div class="col-md-5">
-                {% include 'product/filter.html.twig' with {form: form} only%}
-            </div>
-        </div>
-        <div class="col-md-11">
+        <div class="col-md-12">
             <div class="grid">
                 {% for product in products %}
                     {% include '/allproduct/card.html.twig' with {product: product} only%}
                 {% endfor %}
             </div>
-            <div>
+        </div>
+            <div class="paginator">
                 {{ knp_pagination_render(products) }}
             </div>
-        </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('login') }}
+{% endblock %}
+

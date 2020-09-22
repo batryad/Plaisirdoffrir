@@ -3,34 +3,65 @@
 {% block title %}<title>Product</title>{% endblock %}
 
 {% block body %}
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Name</th>
-                <td>{{ product.name }}</td>
-            </tr>
-            <tr>
-                <img src="{{ asset('/uploads/product/'~ product.image) }}" alt="">
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ product.price }} €</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ product.description }}</td>
-            </tr>
-            <tr>
-                <th>Category</th>
-                <td>{{ product.category.name }}</td>
-            </tr>
-        </tbody>
-    </table>
-    <a href="{{ path('basket_add', {'id': product.id } )}}">Acheter</a>
-    <a href="{{ path('product_index') }}">back to list</a>
-    {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
-    {{ include('product/_delete_form.html.twig') }}
-    {% endif %}
+
+
+    <!-- category name -->
+
+    <div id="header">
+        <span>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQTFlEyObmHeHDHnMPD8SBQAvHyYBSNDlBxpw&usqp=CAU" alt="noun">
+         </span>
+        <h2 class="categoryName">{{ product.category.name }}</h2>
+        <span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQTFlEyObmHeHDHnMPD8SBQAvHyYBSNDlBxpw&usqp=CAU" alt="noun">
+        </span>
+
+
+    </div>
+
+    <section class="allProductContent">
+
+    <div class="columns">
+        <div class="column">
+            <div class="thumbnail-container">
+                <div class="zoom polaroid">
+                <img class="drift-demo-trigger" width="400px" src="{{ asset('/uploads/product/'~ product.image) }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="details">
+                <h3>{{ product.name }}</h3>
+                <p class="price">{{ product.price }} €</p>
+                <div class="descr">
+                <p class="description">{{ product.description }}</p>
+                </div>
+                <div class="columns">
+                    <div class="column" id="wishlist-container">
+                        <button class="button btn btn-primary w-50 fa fa-shopping-cart">
+                      <a class="buy" href="{{ path('basket_add', {'id': product.id } )}}">Acheter</a>
+                        </button>
+
+                    </div>
+                </div>
+
+                <p class="small-text"><span>Livraison standard:</span> 2-5 jours</p>
+                <a class="backtolist" href="{{ path('product_index') }}">back to list</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+                {% endif %}
+            </div>
+            <div class="foot"></div>
+
+        </div>
+
+    </div>
+
+    </section>
+
+
+    <!-- Swiper and EasyZoom plugins end -->
+
 {% endblock %}
 
